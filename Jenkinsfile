@@ -19,7 +19,12 @@ pipeline{
 		stage("Build with gradle"){
 			steps{
 				echo "Running build automation"
-				sh './gradlew build --no-daemon'
+				sh './gradlew clean build --no-daemon'
+			}
+		}
+		stage("Test build "){
+			steps{
+				 sh './gradlew test'
 			}
 		}
 		stage("Archive a build"){
