@@ -9,6 +9,14 @@ pipeline{
           ]]
         )
     }
+    stage("Build gradlew build){
+          sh '''
+            gradlew build --no-daemon
+          '''
+    }
+    stage("Archive a build"){
+        archiveArtifacts artifacts: 'dist/trainSchedule.zip', fingerprint: true, followSymlinks: false
+    }
   }
 
 }
